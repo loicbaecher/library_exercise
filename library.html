@@ -12,34 +12,37 @@
     <div class="title">My Library</div>
     <div class="ndrow">
         <button id="newbook">Add New Book</button>
+        <button id="libdis">Display library</button>
     </div>
-    <div id="myModal" class="modal" style="display:none">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Add a new book</h3>
-            <form class="form1">
-                <div id="formcontent">
-                    <label for="fortitle">Title :</label>
-                    <input type="text" id="fortitle">
-                    <label for="forauthor">Author :</label>
-                    <input type="text" id="forauthor">
-                    <label for="forpages">Pages :</label>
-                    <input type="number" id="forpages" pattern="\d*">
-                <div id="radid">
-                    <label id="radidlabl"> Read or not:</label>
-                    <div id="spacebutton">
-                        <div class="rod">
-                            <input type="radio" name="read" id="read" value="Read">
-                            <label for="read">Read</label>
-                        </div>
-                        <div class="rod2">
-                            <input type="radio" name="read" id="not read" value="Not read">
-                            <label for="not read">Not read</label>
+    <div id="backModal" class="backmodal">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Add a new book</h3>
+                <form class="form1">
+                    <div id="formcontent">
+                        <label for="fortitle">Title :</label>
+                        <input type="text" id="fortitle">
+                        <label for="forauthor">Author :</label>
+                        <input type="text" id="forauthor">
+                        <label for="forpages">Pages :</label>
+                        <input type="number" id="forpages" pattern="\d*">
+                    <div id="radid">
+                        <label id="radidlabl"> Read or not:</label>
+                        <div id="spacebutton">
+                            <div class="rod">
+                                <input type="radio" name="read" id="read" value="Read">
+                                <label for="read">Read</label>
+                            </div>
+                            <div class="rod2">
+                                <input type="radio" name="read" id="not read" value="Not read">
+                                <label for="not read">Not read</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <form>
-            <button type="" id="modub"></button>
+                <form>
+                <button id="modub">Add book to library</button>
+            </div>
         </div>
     </div>
 </body>

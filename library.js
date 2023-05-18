@@ -57,21 +57,36 @@ function displayBooks(){
         curul.appendChild(li2);
         curul.appendChild(li3);
         curul.appendChild(li4);
+
+        let delbook = document.createElement("button");
+        delbook.textContent = "X";
+        delbook.style.backgroundColor = "#73A9AD";
+        delbook.style.border = "1px solid gray"
+        delbook.setAttribute("id",`remobook${i+1}`)
+        delbook.setAttribute("class",`delobooks`)
+
+        newbook.appendChild(delbook);
     }
 }
 
 function openModal(){
     var modal = document.getElementById('myModal');
-    modal.style.display = 'block';
+    var backmodal = document.getElementById("backModal");
+    backmodal.style.opacity = "1";
+    backmodal.style.pointerEvents = "auto";
+    modal.style.transform = "translate(-50%, -50%)";
 }
 
 function closeModal(){
     var modal = document.getElementById('myModal');
-    modal.style.display = 'none';
+    var backmodal = document.getElementById("backModal");
+    backmodal.style.opacity = "0";
+    backmodal.style.pointerEvents = "none";
+    modal.style.transform = "translate(-50%, -70%)";
+
 }
 
 var btnopen = document.querySelector("button#newbook")
-
 btnopen.addEventListener('click',()=>{
     openModal();
 })
@@ -108,3 +123,12 @@ modsub.addEventListener('click',(event)=>{
     addBookToLibrary(newbook);
 
 },false)
+
+var dislib = document.getElementById("libdis");
+dislib.addEventListener('click',displayBooks);
+
+document.addEventListener('keydown',(event)=>{
+    if(event.key=='Escape'){
+        closeModal()
+    }
+})
