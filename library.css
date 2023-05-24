@@ -5,7 +5,10 @@
 }
 
 body{
-    background-color:#F5F0BB;
+    background: rgb(165,172,144);
+    background: linear-gradient(0deg, rgba(165,172,144,1) 0%, rgba(220,233,189,1) 59%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height:100%;
     width:100%;
 }
