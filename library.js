@@ -21,8 +21,8 @@ addBookToLibrary(Book1)
 addBookToLibrary(Book2)
 
 function displayBooks(){
-    e = document.getElementById("booklist");
-    if(e != null){e.remove()}
+    booklist = document.getElementById("booklist");
+    if(booklist != null){booklist.remove()}
     Bookdiv = document.createElement("div");
     Bookdiv.setAttribute("id","booklist");
     Bookdiv.setAttribute("style",`display:grid; 
@@ -37,6 +37,7 @@ function displayBooks(){
         newbook = document.createElement("div");
         newbook.setAttribute("class","newbook");
         newbook.setAttribute("id",`book${i+1}`);
+        newbook.setAttribute("data",`${i+1}`);
         newbook.setAttribute("style","border: 4px solid black; padding:4px;")
 
         Bookdiv.appendChild(newbook);
@@ -61,12 +62,28 @@ function displayBooks(){
         let delbook = document.createElement("button");
         delbook.textContent = "X";
         delbook.style.backgroundColor = "#73A9AD";
-        delbook.style.border = "1px solid gray"
-        delbook.setAttribute("id",`remobook${i+1}`)
-        delbook.setAttribute("class",`delobooks`)
-
+        delbook.style.border = "1px solid gray";
+        delbook.style.borderRadius = "5px";
+        delbook.setAttribute("id",`remobook${i+1}`);
+        delbook.setAttribute("class",`delobooks`);
         newbook.appendChild(delbook);
     }
+
+    delbot = document.querySelectorAll("button.delobooks")
+    for (let j = 0; j < delbot.length; j++) {
+        delbot[j].addEventListener('click', function() {
+            kickbook = document.querySelector(`.newbook[data="${j+1}"]`)
+            console.log(j+1);
+            console.log(kickbook);
+            kickbook.remove();
+            myLibrary.splice(j,1)
+        });
+      }
+}
+
+function remobook(){
+    var remo = document.querySelectorAll('button.delobooks')
+    
 }
 
 function openModal(){
@@ -121,6 +138,7 @@ modsub.addEventListener('click',(event)=>{
 
     newbook = new Book(gettitle.value,getauthor.value,getforpages.value,getSelectedValue())
     addBookToLibrary(newbook);
+    closeModal();
 
 },false)
 
