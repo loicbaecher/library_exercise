@@ -147,36 +147,38 @@ closeb.addEventListener('click',()=>{
 
 var modsub = document.getElementById("modub");
 
-modsub.addEventListener('click',(event)=>{
-    gettitle = document.getElementById("fortitle");
-    getauthor = document.getElementById("forauthor");
-    getforpages = document.getElementById("forpages");
-
-    if(gettitle.value != "" && getauthor.value != "" && getforpages.value != ""){
-
-        event.preventDefault();
-        function getSelectedValue() {
-            var radios = document.getElementsByName('read');
-            
-            for (var i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                var selectedValue = radios[i].value;
-                return(selectedValue);
-                break;
-                }
-            }
-            }
-
-
-        newbook = new Book(gettitle.value,getauthor.value,getforpages.value,getSelectedValue())
-        addBookToLibrary(newbook);
-        closeModal();
-
+let getSelectedValue = function(){
+    var radios = document.getElementsByName('read');
+    
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+        var selectedValue = radios[i].value;
+        return(selectedValue);
+        break;
+        }
     }
+}
 
-},false)
+modsub.addEventListener('click',(event)=>{
+    let gettitle = document.getElementById("fortitle");
+    let getauthor = document.getElementById("forauthor");
+    let getforpages = document.getElementById("forpages");
+    event.preventDefault();
 
-var dislib = document.getElementById("libdis");
+    //Define validation
+
+    if(gettitle.checkValidity()){
+        if(getauthor.checkValidity()){
+            if(getforpages.checkValidity()){
+                closeModal();
+                let newbook = new Book(gettitle.value,getauthor.value,getforpages.value,getSelectedValue());
+                addBookToLibrary(newbook);
+            }
+        }
+    }
+})
+
+let dislib = document.getElementById("libdis");
 dislib.addEventListener('click',displayBooks);
 
 document.addEventListener('keydown',(event)=>{
